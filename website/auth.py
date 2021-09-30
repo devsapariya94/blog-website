@@ -12,6 +12,11 @@ with open('website\config.json', 'r') as c:
 
 @auth.route("/login")
 def login():
+          if request.method=="POST":
+                    logemail=request.form.get("logemail")
+                    logpass=request.form.get("logpass")
+                    email_exist=Users.query.filter_by(username=logemail).first()
+                    pass
           return render_template("login.html",
                                   main_color=params["main_color"],
                                   page_heading="Login",

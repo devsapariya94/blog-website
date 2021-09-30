@@ -82,4 +82,34 @@ function check_email() {
     params = { "email": email };
     xhr.send(JSON.stringify(params));
   }
+
+
+
+  function check_email_for_login() {
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/check_email', true);
+    element=document.getElementById('password_not_match');
+    xhr.onload = function () {
+          if (this.responseText=="yes") {
+            element.style.opacity = "1";
+            element.innerHTML = "Email is already in use";
+            document.getElementById('signup-btn').disabled = true;
+            document.getElementById('password').disabled=true;
+            document.getElementById('cpassword').disabled=true;
+    
+            }
+            if (this.responseText=="no")  {
+            element.style.opacity = "0";
+            element.innerHTML = "*";
+            document.getElementById('signup-btn').disabled = false;
+            document.getElementById('password').disabled=false;
+            document.getElementById('cpassword').disabled=false;
+    
+          }
+      }
+      var email = document.getElementById('email').value
+      params = { "email": email };
+      xhr.send(JSON.stringify(params));
+    }
   
