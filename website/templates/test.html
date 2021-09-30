@@ -1,0 +1,211 @@
+<!-- <html>
+
+<head>
+
+	<script src="https://www.google.com/recaptcha/api.js"></script>
+
+</head>
+<script>
+	function onSubmit(token) {
+	  document.getElementById("demo-form").submit();
+	}
+        </script>
+<body>
+
+<title>test</title>
+
+<button class="g-recaptcha" 
+        data-sitekey="6LeAsJMcAAAAANP2Jg_AnDUxuSFnI1Xs8Ltag1h7" 
+        data-callback='onSubmit' 
+        data-action='submit'>Submit</button>
+
+</body>
+
+</html> -->
+
+
+
+
+
+
+
+
+
+<!-- 
+<html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <script>
+       function onSubmit(token) {
+         document.getElementById("demo-form").submit();
+       }
+     </script>
+  </head>
+  <body>
+    <form id='demo-form' action="?" method="POST">
+      <button class="g-recaptcha" data-sitekey="6LeAsJMcAAAAANP2Jg_AnDUxuSFnI1Xs8Ltag1h7" data-callback='onSubmit'>Submit</button>
+      <br/>
+    </form>
+  </body>
+</html>
+ -->
+
+
+<html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <form action="?" method="POST">
+      <div class="g-recaptcha" data-sitekey="6LeAsJMcAAAAANP2Jg_AnDUxuSFnI1Xs8Ltag1h7"></div>
+      <br/>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/static/css/util.css">
+	<link rel="stylesheet" href="/static/css/style.css">
+
+	<title>Blog</title>
+</head>
+<style>
+	:root {
+		--main-bg-color: {
+				{
+				main_color
+			}
+		}
+
+		;
+	}
+</style>
+
+<script>
+
+
+	function check_pass() {
+		if (document.getElementById('password').value ==
+			document.getElementById('cpassword').value) {
+			document.getElementById('signup-btn').disabled = false;
+		} else {
+			document.getElementById('signup-btn').disabled = true;
+		}
+	}
+</script>
+
+<body>
+	<div class="upper">
+
+		<nav class="nav width_1 m_auto" id="nav">
+			<div class="nav-left">
+				<div>
+					<a href="/" class="title">{{blog_name}}</a>
+				</div>
+
+				<ul class="responsive-opecity">
+
+					<li class="nav-item"> <a href="/">Home</a> </li>
+					<li class="nav-item"><a href="/about">About</a></li>
+					<li class="nav-item"><a href="/login">Login</a></li>
+					<li class="nav-item"><a href="/contact">Contact</a></li>
+					<li class="nav-item">
+						<form class="search" action="#">
+							<input placeholder="search artical"
+								class="form-input" required
+								name="search" />
+							<input type="submit" class="btn" value="Search" />
+						</form>
+					</li>
+				</ul>
+
+			</div>
+
+			<div class="burger">
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+			</div>
+		</nav>
+
+
+	</div>
+
+
+	<div class="space_btw"></div>
+
+
+
+
+
+
+
+	<div class="content width_1 m_auto">
+
+		<div class="signup-greet">Sign Up</div>
+		<form action="/signup" class="signup-form" method="POST">
+			<div class="signup-email">
+				<input type="text" name="username" id="username" placeholder="Username"
+					class="signup-input-email" required>
+				<div style="padding-top: 2vw;"></div>
+				<input type="email" name="email" id="email" placeholder="E-Mail"
+					class="signup-input-email" required>
+				<div style="padding-top: 2vw;"></div>
+				<input type="password" name="password" id="password" placeholder="Password"
+					class="signup-input-pass" onchange="check_pass()" required>
+				<div style="padding-top: 2vw;"></div>
+				<input type="password" name="cpassword" id="cpassword"
+					placeholder="Re-Type Password" class="signup-input-pass"
+					onchange="check_pass()" required>
+				<div style="padding-top: 2vw;"></div>
+
+			</div>
+
+
+
+			<button type="submit" id="signup-btn" class="signup-btn">submit</button>
+	</div>
+	</form>
+
+
+
+
+	<div class="space_btw"></div>
+
+	<div class="footer width_2 m_auto">
+		<footer class="foot">
+			<div class="logo_foot">
+				<a href="https://github.com" target="blank"><img
+						src="/static/img/github-logo.png" alt="github" srcset=" "
+						class="social_logo"></a>
+				<a href="https://facebook.com" target="blank"><img
+						src="/static/img/facebook_logo.png" alt="github" srcset=" "
+						class="social_logo"></a>
+				<a href="https://instagram.com" target="blank"><img
+						src="/static/img/insta_logo.png" alt="github" srcset=" "
+						class="social_logo"></a>
+			</div>
+		</footer>
+
+	</div>
+	</div>
+</body>
+
+
+
+
+</html> -->
+
+
+
+

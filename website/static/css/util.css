@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600&display=swap');
+:root {
+          
+          --font-1: 'Sansita Swashed', cursive;
+          --font-2: 'Cabin', sans-serif;
+          --font-3: 'Nerko One', cursive;
+          --font-4: 'East Sea Dokdo', cursive;
+          --font-5: 'Rowdies', cursive;
+          --font-6: 'Supermercado One', cursive;
+          --font-7: 'New Tegomin', serif;
+          --font-8: 'Open Sans', sans-serif;
+}
+
+.width_1 {
+          max-width: 1200px;
+}
+
+.width_2 {          
+          max-width: 900px;
+}
+
+.m_auto {
+          margin: auto;
+}

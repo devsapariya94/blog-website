@@ -1,0 +1,10 @@
+{
+          "params": {
+                    "database":"mysql://root:942003@localhost/site.format(user='root', password='942003', server='localhost', database='blog-3')",
+                    "blog_name": "Learner",
+                    "blog_subheading":"Ready to learn new...",
+                    "home_background_img": "index_bg.jpg",
+                    "main_color": "red",
+                    "login_background_img": "test.jpg"
+          }
+}

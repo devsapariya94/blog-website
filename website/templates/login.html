@@ -1,0 +1,27 @@
+{% extends "base-2.html" %}
+{% block body %}
+
+<div class="content width_1 m_auto">
+
+  
+  <div class="login-greet">Login</div>
+  <form action="/login" class="login-form" method="POST">
+  <div class="login-email">
+            <input type="text" name="logemail" id="logemail" placeholder="E-Mail" class="login-input-email" required>
+            <div style="padding-top: 2vw;"></div>
+            <input type="password" name="logpass" id="logpass" placeholder="Password" class="login-input-pass" required>
+
+
+  </div>
+  
+
+
+  <button type="submit" class="login-btn">Login</button></div>
+  </form>
+  <div style="text-align: center; padding-top: 1vw; font-size: 1.5vw;">
+  New author? <a href="/signup"> register</a>  yourselef
+  </div>
+
+
+{% endblock %}
+

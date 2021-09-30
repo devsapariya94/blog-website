@@ -1,0 +1,47 @@
+{% extends "base-2.html" %}
+{% block body %}
+
+<script src="{{url_for('static', filename='script/main.js')}}"></script>
+
+
+
+
+<div class="content width_1 m_auto">
+
+
+  <div class="signup-greet">Sign Up</div>
+
+  <form action="/signup" class="signup-form" method="POST">
+
+    <div class="signup-email">
+
+      <input type="text" name="username" id="username" placeholder="Username" onchange="check_user()" class="signup-input-email" required>
+      <div style="padding-top: 2vw;"></div>
+
+      <input type="email" name="email" id="email" placeholder="E-Mail" class="signup-input-email" onchange="check_email()"required>
+      <div style="padding-top: 2vw;"></div>
+
+      <input type="password" name="password" id="password" placeholder="Password" class="signup-input-pass"
+        onchange="check_pass()" required>
+      <div style="padding-top: 2vw;"></div>
+          
+      <input type="password" name="cpassword" id="cpassword" placeholder="Re-Type Password" class="signup-input-pass"
+        onchange="check_pass()" required>
+      <br>
+      <span id="password_not_match" style="color: red; font-weight: bold
+            ; padding-top: 3px; opacity: 0;">*</span>
+      <div style="padding-top: 2vw;"></div>
+
+    </div>
+
+
+
+    <button type="submit" id="signup-btn" class="signup-btn">submit</button>
+</div>
+</form>
+
+
+
+
+
+{% endblock %}
