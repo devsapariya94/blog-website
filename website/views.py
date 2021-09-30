@@ -13,7 +13,3 @@ def home():
                                blog_name=params["blog_name"],
                                page_subheading=params["blog_subheading"],
                                page_heading=params["blog_name"])
- 
-@views.route("/test")
-def test():
-          return render_template("test.html")
