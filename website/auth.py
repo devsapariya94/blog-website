@@ -4,19 +4,26 @@ from . import db
 from .models import Users
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required, current_user
+import time
 
 auth=Blueprint("auth", __name__)
 
 with open('website\config.json', 'r') as c:
                     params = json.load(c)["params"]
 
-@auth.route("/login")
+@auth.route("/login", methods=["GET","POST"])
 def login():
           if request.method=="POST":
-                    logemail=request.form.get("logemail")
-                    logpass=request.form.get("logpass")
-                    email_exist=Users.query.filter_by(username=logemail).first()
-                    pass
+                    get_json=request.get_json("params")
+                    email=get_json['email'].lower()
+                    password_get=get_json['password']
+                    user=Users.query.filter_by(email=email).first()
+
+                    if check_password_hash(user.password, password_get):
+                              login_user(user, remember=True)
+                              return "yes"
+                    else:
+                              return "no"      
           return render_template("login.html",
                                   main_color=params["main_color"],
                                   page_heading="Login",
@@ -48,8 +55,8 @@ def logout():
 def check_user():
 
           if request.method=="POST":
-                    a=request.get_json("params")
-                    username=a['username'].lower()
+                    get_json=request.get_json("params")
+                    username=get_json['username'].lower()
                     username_exist=Users.query.filter_by(username=username).first()
                     if username_exist:
                               return "yes"
@@ -65,8 +72,8 @@ def check_user():
 def check_email():
 
           if request.method=="POST":
-                    a=request.get_json("params")
-                    email=a['email'].lower()
+                    get_json=request.get_json("params")
+                    email=get_json['email'].lower()
                     email_exist=Users.query.filter_by(email=email).first()
                     if email_exist:
                               return "yes"
@@ -75,3 +82,4 @@ def check_email():
                     
           else:
                     return redirect("/")
+

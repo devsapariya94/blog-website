@@ -10,43 +10,50 @@
   <title>Blog</title>
 </head>
 <style>
-:root{
-  --main-bg-color: {{main_color}};
-}
+  :root {
+    --main-bg-color: {
+        {
+        main_color
+      }
+    }
+
+    ;
+  }
 </style>
+
 <body>
   <div class="upper">
-   
-      <nav class="nav width_1 m_auto" id="nav">
-        <div class="nav-left">
-          <div>
-            <a href="/" class="title">{{blog_name}}</a>
-          </div> 
-        
-            <ul class="responsive-opecity">
 
-              <li class="nav-item"> <a href="/">Home</a> </li>
-              <li class="nav-item"><a href="/about">About</a></li>
-              <li class="nav-item"><a href="/login">Login</a></li>
-              <li class="nav-item"><a href="/contact">Contact</a></li>
-              <li class="nav-item">
-                <form class="search" action="#">
-                  <input placeholder="search artical" class="form-input" required name="search" />
-                  <input type="submit" class="btn" value="Search" />
-                </form>
-              </li>
-            </ul>
-          
+    <nav class="nav width_1 m_auto" id="nav">
+      <div class="nav-left">
+        <div>
+          <a href="/" class="title">{{blog_name}}</a>
         </div>
-      
-       <div class="burger">
-       <div class="line"></div>
-       <div class="line"></div>
-       <div class="line"></div>
+
+        <ul class="responsive-opecity">
+
+          <li class="nav-item"> <a href="/">Home</a> </li>
+          <li class="nav-item"><a href="/about">About</a></li>
+          <li class="nav-item"><a href="/contact">Contact</a></li>
+          <li class="nav-item"><a href="/login">Login</a></li>
+          <li class="nav-item">
+            <form class="search" action="#">
+              <input placeholder="search artical" class="form-input" required name="search" />
+              <input type="submit" class="btn" value="Search" />
+            </form>
+          </li>
+        </ul>
+
       </div>
-      </nav>
-  
-    
+
+      <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </nav>
+
+
   </div>
 
 
@@ -69,6 +76,8 @@
 
   </div>
   </div>
+  <script src="{{url_for('static', filename='script/main.js')}}"></script>
+
 </body>
 
 
