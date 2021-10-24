@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
@@ -17,7 +17,13 @@ def create_app():
           app.config["SECRET_KEY"]="helloworld"
           app.config["SQLALCHEMY_DATABASE_URI"]= f'sqlite:///{DB_NAME}'
           db.init_app(app)
-          
+          @app.errorhandler(404)
+          def not_found(e):
+                    return render_template("404.html",
+                    main_color=params["main_color"],
+                                  page_heading="Page not Found",
+                                  blog_name=params["blog_name"])
+
           from .views import views
           from .auth import auth
 

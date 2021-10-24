@@ -11,9 +11,15 @@
     <div class="content width_1 m_auto">
 
           <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{%if current_user.is_authenticated %}
+logged in
 
+
+      {% else %}
 
           content
+{% endif %}
+
         {% endblock %}
 
 

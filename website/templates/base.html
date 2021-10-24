@@ -11,20 +11,10 @@
 </head>
 <style>
   :root {
-    --main-bg-color: {
-        {
-        main_color
-      }
-    }
+    --main-bg-color: {{main_color}};
 
-    ;
-
-    --bg_img: {
-        {
-        bg_img
-      }
+    --bg_img: {{bg_img}}
     }
-  }
 </style>
 
 <body>
@@ -44,7 +34,12 @@
           <li class="nav-item"> <a href="/">Home</a> </li>
           <li class="nav-item"><a href="/about">About</a></li>
           <li class="nav-item"><a href="/contact">Contact</a></li>
+
+          {% if current_user.is_authenticated %}
+          <li class="nav-item"><a href="/logout">Logout</a></li>
+          {% else %}
           <li class="nav-item"><a href="/login">Login</a></li>
+          {% endif %}
           <li class="nav-item">
             <form class="search" action="#">
               <input placeholder="search artical" class="form-input" required name="search" />

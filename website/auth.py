@@ -49,7 +49,14 @@ def signup():
 
 @auth.route("/logout")
 def logout():
-          return redirect(url_for("view.home"))
+          if current_user.is_authenticated :
+          
+                    logout_user()
+                    return redirect("/")
+          else:
+                    return 
+
+
 
 @auth.route("/check_user", methods=["GET","POST"])
 def check_user():
