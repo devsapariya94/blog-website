@@ -41,8 +41,9 @@ def signup():
                     db.session.commit()
                     login_user(new_user, remember=True)
                     return redirect(url_for('views.home'))
-
-          return render_template("signup.html",
+          elif current_user.is_authenticated :
+                    return redirect("/home")
+          return render_template("signup.html",   
                                   main_color=params["main_color"],
                                   page_heading="Sign Up",
                                   blog_name=params["blog_name"])
@@ -54,7 +55,10 @@ def logout():
                     logout_user()
                     return redirect("/")
           else:
-                    return 
+                    return  render_template("404.html",
+                                  main_color=params["main_color"],
+                                  page_heading="Page not Found",
+                                  blog_name=params["blog_name"])
 
 
 
