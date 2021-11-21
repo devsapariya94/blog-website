@@ -7,7 +7,7 @@ function check_pass() {
       document.getElementById('signup-btn').disabled = true;
     }
     else {
-      element.style.opacity = "0"
+      element.style.opacity = "0";
       element.innerHTML = "*";
       document.getElementById('signup-btn').disabled = false;
     }
@@ -105,7 +105,7 @@ function check_email_for_login() {
     }
   }
   var email = document.getElementById('logemail').value
-  params = { "email": email,};
+  params = { "email": email, };
   xhr.send(JSON.stringify(params));
 }
 
@@ -117,17 +117,33 @@ function check_password_for_login() {
   element = document.getElementById('login_warning');
   xhr.onload = function () {
     if (this.responseText == "yes") {
-    window.location="/sucsses"
-}
+      window.location = "/sucsses";
+    }
     if (this.responseText == "no") {
       element.style.opacity = "1";
       element.innerHTML = "Password is incorret, Please double check it.";
     }
   }
   var email = document.getElementById('logemail').value
-  var password= document.getElementById("logpass").value
-  params = { "email": email, "password":password};
+  var password = document.getElementById("logpass").value
+  params = { "email": email, "password": password };
+  element.style.opacity = "0";
+  element.innerHTML = "*";
   xhr.send(JSON.stringify(params));
 }
 
 
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+function after_forgetpass() {
+  const xhr = new XMLHttpRequest();
+  console.log("asd");
+  xhr.open('POST', '/forgetpass', true);
+  var content = document.getElementById("forgetpass_content")
+  xhr.onload = function () {
+    content.innerHTML="<div style>";
+  }
+  var email = document.getElementById('logemail').value;
+  params = { "email": email };
+  xhr.send(JSON.stringify(params));
+}

@@ -253,6 +253,52 @@
           text-align: center;
 }
 
+
+.forgetpass-greet{
+    text-align: center;
+          font-family: var(--font-5);
+          font-size: 75px;
+}
+
+.forgetpass-btn{
+    font-family: var(--font-2);
+    font-size: 2vw;
+    border-radius: 2vw;
+    width: 8vw;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+
+}
+
+.forgetpass-btn:hover {
+    cursor: pointer;
+    background-color: var(--main-bg-color);
+}
+
+.forgetpass-form{
+padding-top: 3vw;
+text-align: center;    
+}
+
+.forgetpass-input-email{
+    width: 700px;
+    font-family: var(--font-1);
+    font-size: 30px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.forgetpass-input-email:focus{
+    border-width: 4px;
+}
 .signup-greet {
           text-align: center;
           font-family: var(--font-5);

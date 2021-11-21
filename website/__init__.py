@@ -20,7 +20,7 @@ def create_app():
           @app.errorhandler(404)
           def not_found(e):
                     return render_template("404.html",
-                    main_color=params["main_color"],
+                            main_color=params["main_color"],
                                   page_heading="Page not Found",
                                   blog_name=params["blog_name"])
 

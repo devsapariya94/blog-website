@@ -1,3 +1,4 @@
+import re
 from flask import Blueprint, render_template,redirect, url_for, request, flash
 import json
 from . import db
@@ -53,7 +54,7 @@ def logout():
           if current_user.is_authenticated :
           
                     logout_user()
-                    return redirect("/")
+                    return redirect("/login")
           else:
                     return  render_template("404.html",
                                   main_color=params["main_color"],
@@ -77,6 +78,19 @@ def check_user():
           else:
                     return redirect("/")
 
+@auth.route("/forgetpass", methods=["GET","POST"])
+def forgetpass():
+    if request.method=="POST":
+        print("ds")
+        get_json=request.get_json("params")
+        email=get_json['email'].lower()
+        print(email)
+        return "SUCC"
+    else:
+        return render_template("forgetpass.html",   
+                                  main_color=params["main_color"],
+                                  page_heading="Forget Password",
+                                  blog_name=params["blog_name"])
 
 
 @auth.route("/check_email", methods=["GET","POST"])

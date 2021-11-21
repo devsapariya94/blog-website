@@ -1,0 +1,23 @@
+{% extends "base-2.html" %}
+{% block body %}
+
+<div class="content width_1 m_auto">
+
+    <div class="forgetpass-greet">Forget Pass</div>
+
+    <form action="/forgetpass" class="forgetpass-form" method="post">
+        <div class="forgetpass-input">
+            <div>
+                <input type="email" name="logemail" id="logemil" placeholder="E-Mail" class="forgetpass-input-email"
+                    required>
+            </div>
+            <div style="padding-top: 2vw;">
+            <button type="submit" class="forgetpass-btn" onclick="after_forgetpass()">Submit</button>
+        </div>
+        </div>
+    </form>
+
+
+
+
+    {% endblock %}

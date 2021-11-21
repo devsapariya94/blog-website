@@ -16,16 +16,20 @@
       <div>
         <span id="login_warning" style="color: red; font-weight: bold; opacity: 0;">*</span>
       </div>
+    
     </div>
 
 
 
-    <button id="login-btn" onclick="check_password_for_login()" class="login-btn">Login</button>
+    <button onclick="check_password_for_login()" class="forgetpass-btn">Login</button>
   </div>
 </div>
-  <div style="text-align: center; padding-top: 1vw; font-size: 1.5vw;">
-    New author? <a href="/signup"> register</a> yourselef
-  </div>
+<div style="text-align: center; padding-top: 10px;">
+  <a href="/forgetpass" >Forget Password?</a>
+</div>
+<div style="text-align: center; padding-top: 1vw; font-size: 1.5vw;">
+  New author? <a href="/signup"> register</a> yourselef
+</div>
 
 
-  {% endblock %}
+{% endblock %}
