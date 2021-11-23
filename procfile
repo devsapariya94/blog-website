@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath app webite.init
+web: gunicorn --chdir website __init__.py:app
