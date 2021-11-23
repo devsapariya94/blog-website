@@ -4,7 +4,7 @@ from os import path
 from flask_login import LoginManager
 import json
 
-with open('website\config.json', 'r') as c:
+with open('config.json', 'r') as c:
                     params = json.load(c)["params"]
 
 
