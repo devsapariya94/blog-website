@@ -1,2 +1,2 @@
-web: gunicorn --chdir website __init__.py:app
+web: gunicorn --chdir app.py:app
 heroku ps:scale web=1
