@@ -3,17 +3,27 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
 import json
+from flask_mail import Mail, Message
 
 with open('website\config.json', 'r') as c:
                     params = json.load(c)["params"]
 
 
 db=SQLAlchemy()
-
+mail=Mail()
 DB_NAME="database.db"
 
 def create_app():
           app=Flask(__name__)
+
+          app.config['MAIL_SERVER']='smtp.gmail.com'
+          app.config['MAIL_PORT'] = 465
+          app.config['MAIL_USERNAME'] = params["email"]
+          app.config['MAIL_PASSWORD'] = params["pass"]
+          app.config['MAIL_USE_TLS'] = False
+          app.config['MAIL_USE_SSL'] = True
+          mail.init_app(app)
+
           app.config["SECRET_KEY"]="helloworld"
           app.config["SQLALCHEMY_DATABASE_URI"]= f'sqlite:///{DB_NAME}'
           db.init_app(app)

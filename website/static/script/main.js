@@ -111,7 +111,7 @@ function check_email_for_login() {
 
 
 function check_password_for_login() {
-
+  document.getElementById('login-btn').disabled = true;
   const xhr = new XMLHttpRequest();
   xhr.open('POST', '/login', true);
   element = document.getElementById('login_warning');
@@ -121,6 +121,7 @@ function check_password_for_login() {
     }
     if (this.responseText == "no") {
       element.style.opacity = "1";
+      document.getElementById('login-btn').disabled = false;
       element.innerHTML = "Password is incorret, Please double check it.";
     }
   }
@@ -132,18 +133,78 @@ function check_password_for_login() {
   xhr.send(JSON.stringify(params));
 }
 
+function ValidateEmail() {
 
-// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  var emailAdress = document.getElementById("logemail").value
+  let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (emailAdress.match(regexEmail)) {
+    
+    document.getElementById('forgetpass-btn').disabled = false;
+  }
+  else {
+    window.alert("Formate of E-Mail is incorrect")
+    document.getElementById('forgetpass-btn').disabled = true;
+  }
+}
 
 function after_forgetpass() {
   const xhr = new XMLHttpRequest();
-  console.log("asd");
   xhr.open('POST', '/forgetpass', true);
+  document.getElementById('forgetpass-btn').disabled = true;
   var content = document.getElementById("forgetpass_content")
-  xhr.onload = function () {
-    content.innerHTML="<div style>";
+  var content2 = document.getElementById("forgetpass_email_sent")
+  content.style.display = "none";
+  content2.style.display = "block";
+  xhr.onprogress = function () {
+
   }
+
   var email = document.getElementById('logemail').value;
   params = { "email": email };
+  xhr.send(JSON.stringify(params));
+}
+
+
+
+function reset_check_pass() {
+  const element = document.getElementById("reset_warning");
+  if (document.getElementById('new_pass').value == document.getElementById('new_pass_c').value) {
+    if (document.getElementById('new_pass').value.length < 8) {
+      element.style.opacity = "1";
+      element.innerHTML = "The password should be in atleast 8 charcter long";
+      document.getElementById('reset-pass-btn').disabled = true;
+    }
+    else {
+      element.style.opacity = "0";
+      element.innerHTML = "*";
+      document.getElementById('reset-pass-btn').disabled = false;
+    }
+  }
+
+  else {
+    element.style.opacity = "1";
+    element.innerHTML = "Passwords are not same";
+    document.getElementById('reset-pass-btn').disabled = true;
+  }
+
+}
+
+
+
+function reset_pass() {
+  document.getElementById('reset-pass-btn').disabled = true;
+  path=window.location.pathname
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', path, true);
+  xhr.onload = function () {
+    if (this.responseText == "yes") {
+console.info("yes")
+    }
+    if (this.responseText == "no") {
+
+    }
+  }
+  var password = document.getElementById('new_pass').value
+  params = { "pass": password};
   xhr.send(JSON.stringify(params));
 }

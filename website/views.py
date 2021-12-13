@@ -1,8 +1,8 @@
 from flask import Blueprint,render_template
 import json
+from . import params
+
 views=Blueprint("views", __name__)
-with open('website\config.json', 'r') as c:
-                    params = json.load(c)["params"]
 
 @views.route("/")
 @views.route("/home")

@@ -1,9 +1,36 @@
 {% extends "base-2.html" %}
 {% block body %}
 
+<style>
+
+    #wrong_page{
+        text-align: center;
+        font-family: var(--font-2);
+        font-size: 3vw;
+    font-weight: 100;
+    color: red;
+    color: rgb(247, 0, 0);
+  text-shadow:
+    0 0 5px rgb(255, 34, 34),
+    0 0 10px rgb(255, 86, 86),
+    0 0 20px rgb(255, 105, 105),
+    0 0 40px rgb(255, 135, 135),
+    0 0 80px rgb(255, 156, 156),
+    0 0 90px rgb(255, 169, 169),
+    0 0 100px rgb(255, 189, 189),
+    0 0 150px rgb(255, 217, 217);
+    -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -o-user-select: none;
+          user-select: none;
+    }
+</style>
+
 <div class="content width_1 m_auto">
 
- <div style="color: red; font-size: 6vw; font-weight: bolder; text-align: center;">Page your are searching is<br> Not Found</div>
+ <div id="wrong_page">Page your are searching is<br> Not Found</div>
 
 
 

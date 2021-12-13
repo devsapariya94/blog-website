@@ -1,0 +1,61 @@
+{% extends "base-2.html" %}
+{% block body %}
+
+<style>
+#pass_reset{
+    display: none;
+    text-align: center;
+    font-family: var(--font-2);
+    font-size: 3vw;
+    font-weight: 100;
+    color: rgb(0, 0, 0);
+  text-shadow:
+    0 0 5px rgb(0, 255, 0),
+    0 0 10px rgb(20, 255, 20),
+    0 0 20px rgb(40, 255, 40),
+    0 0 40px rgb(70, 255, 70),
+    0 0 80px rgb(100, 255, 100),
+    0 0 90px rgb(150, 255, 150),
+    0 0 100px rgb(200, 255, 200),
+    0 0 150px rgb(255, 255, 255);
+    -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -o-user-select: none;
+          user-select: none;
+}
+
+</style>
+<div class="content width_1 m_auto">
+    <div class="pass_reset_content" id="pass_reset_content">
+        <div class="forgetpass-greet">Reset Password</div>
+
+
+        <div class="pass-reset-form">
+            <div style="padding-top: 2vw;">
+                    <input type="password" name="password" id="new_pass" placeholder="New Password" class="reset_pass_input" onchange="reset_check_pass()" required>
+            </div>
+            <div style="padding-top: 2vw;">
+                <input type="password" name="password" id="new_pass_c" placeholder="Pls Confirmed Password" class="reset_pass_input" onchange="reset_check_pass()" required>
+        </div>
+            <div style="padding-top: 2vw;"> </div>
+                <button class="reset-pass-btn" id="reset-pass-btn" onclick="reset_pass()">Reset</button>
+                <br>
+                <br>
+                <span id="reset_warning" style="color: red; font-weight: bold
+            ; padding-top: 3px;opacity: 0;">*</span>
+        </div>
+
+
+    </div>
+
+    <div id="pass_reset">
+       Your Password Has been Reset.
+        <br>
+        <br>
+        <a href="/login" style="text-shadow: none;">Login Page</a>
+    </div>
+
+
+    {% endblock %}
