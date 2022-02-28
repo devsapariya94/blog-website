@@ -129,12 +129,7 @@ def request_reset(token):
                                         main_color=params["main_color"],
                                         page_heading="Page not Found",
                                         blog_name=params["blog_name"])
-    # except:
-    #     print("except")
-    #     return render_template("404.html",
-    #                             main_color=params["main_color"],
-    #                             page_heading="Page not Found",
-    #                             blog_name=params["blog_name"])
+    
 
 @auth.route("/check_email", methods=["GET","POST"])
 def check_email():

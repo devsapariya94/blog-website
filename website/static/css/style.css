@@ -54,6 +54,7 @@
 }
 
 .btn:hover {
+  color: black;
   cursor: pointer;
   background-color: var(--main-bg-color);
   -webkit-user-select: none;
@@ -246,6 +247,7 @@
 
 .login-btn:hover {
   cursor: pointer;
+  color: black;
   background-color: var(--main-bg-color);
 }
 
@@ -273,6 +275,7 @@
 }
 
 .forgetpass-btn:hover {
+  color: black;
   cursor: pointer;
   background-color: var(--main-bg-color);
 }
@@ -355,6 +358,7 @@
 }
 
 .signup-btn:hover {
+  color: black;
   cursor: pointer;
   background-color: var(--main-bg-color);
 }
@@ -458,6 +462,7 @@
 }
 
 .reset-pass-btn:hover{
+  color: black;
   cursor: pointer;
   background-color: var(--main-bg-color);
 }
