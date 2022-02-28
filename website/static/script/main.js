@@ -195,10 +195,14 @@ function reset_pass() {
   document.getElementById('reset-pass-btn').disabled = true;
   path=window.location.pathname
   const xhr = new XMLHttpRequest();
+  var content = document.getElementById("pass_reset_content")
+  var content2 = document.getElementById("pass_reset")
   xhr.open('POST', path, true);
   xhr.onload = function () {
     if (this.responseText == "yes") {
 console.info("yes")
+content.style.display = "none";
+content2.style.display = "block";
     }
     if (this.responseText == "no") {
 
