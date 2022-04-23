@@ -12,54 +12,56 @@
 <style>
   :root {
     --main-bg-color: {{main_color}};
-  }
+    }
 </style>
 
 <body>
-  <div class="upper">
+  
 
-    <nav class="nav width_1 m_auto" id="nav">
-      <div class="nav-left">
+
+
+    <nav class="nav-base" id="nav">
+      <div class="nav-left-base">
         <div>
-          <a href="/" class="title">{{blog_name}}</a>
+          <a href="/" class="title-base">{{blog_name}}</a>
         </div>
 
-        <ul class="responsive-opecity">
+        <ul>
 
-          <li class="nav-item"> <a href="/">Home</a> </li>
-          <li class="nav-item"><a href="/about">About</a></li>
-          <li class="nav-item"><a href="/contact">Contact</a></li>
+          <li> <a href="/">Home</a> </li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+
           {% if current_user.is_authenticated %}
-          <li class="nav-item"><a href="/logout">Logout</a></li>
+          <li><a href="/logout">Logout</a></li>
           {% else %}
-          <li class="nav-item"><a href="/login">Login</a></li>
+          <li><a href="/login">Login</a></li>
           {% endif %}
-          <li class="nav-item">
-            <form class="search" action="#">
-              <input placeholder="search artical" class="form-input" required name="search" />
-              <input type="submit" class="btn" value="Search" />
+          <li>
+            <form action="#">
+              <input placeholder="search artical" class="search-input-base" required name="search" />
+              <input type="submit" class="search-btn-base" value="Search" />
             </form>
           </li>
         </ul>
 
       </div>
 
-      <div class="burger">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-      </div>
+      
     </nav>
 
 
-  </div>
 
 
-  <div class="space_btw"></div>
+    
+
+
+
+
+ 
 
   {% block body %} {% endblock %}
-  <div class="space_btw"></div>
-
+  
   <div class="footer width_2 m_auto">
     <footer class="foot">
       <div class="logo_foot">
@@ -74,8 +76,6 @@
 
   </div>
   </div>
-  <script src="{{url_for('static', filename='script/main.js')}}"></script>
-
 </body>
 
 

@@ -3,7 +3,9 @@
   padding: 0;
 }
 
-.nav {
+
+
+.nav-base {
   /* background-color: lawngreen; */
   align-items: center;
   position: relative;
@@ -21,7 +23,7 @@
   user-select: none;
 }
 
-.form-input {
+/* .form-input {
   height: 20px;
   width: 150px;
   font-family: var(--font1);
@@ -32,6 +34,50 @@
   border-color: black;
   border-radius: 20px;
   padding-left: 10px;
+} */
+
+.search-input-base{
+  height: 20px;
+  width: 150px;
+  font-family: var(--font1);
+  font-size: 15px;
+  padding-bottom: 3px;
+  margin: 10px;
+  border-width: 2px;
+  border-color: black;
+  border-radius: 20px;
+  padding-left: 10px;
+}
+
+.search-btn-base{
+  height: 27px;
+  width: 64px;
+  margin: 10px;
+  margin-right: 0px;
+  font-family: var(--font-1);
+  font-size: 15px;
+  padding-bottom: 3px;
+  border-radius: 20px;
+  border-width: 2px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.search-btn-base:hover {
+  color: black;
+  cursor: pointer;
+  background-color: var(--main-bg-color);
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 .btn {
@@ -65,7 +111,7 @@
   user-select: none;
 }
 
-.nav-left ul li {
+.nav-left-base ul li {
   list-style: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -75,7 +121,7 @@
   user-select: none;
 }
 
-.nav-left ul li a {
+.nav-left-base ul li a {
   text-decoration: none;
   color: rgb(0, 0, 0);
   margin: 10px;
@@ -89,12 +135,12 @@
   font-weight: bold;
 }
 
-.nav-left ul li a:hover {
+.nav-left-base ul li a:hover {
   font-weight: strong;
   color: var(--main-bg-color);
 }
 
-.nav-left ul {
+.nav-left-base ul {
   display: flex;
   margin: 15px;
   margin-right: 0px;
@@ -106,7 +152,7 @@
   user-select: none;
 }
 
-.title {
+.title-base {
   text-decoration: none;
   font-size: 50px;
   font-weight: bold;
@@ -120,16 +166,13 @@
   padding-right: 30px;
 }
 
-.nav-left {
+.nav-left-base {
   display: flex;
   margin: 5px;
   margin-right: 0px;
 }
 
-.nav-right {
-  margin-right: 5px;
-  padding-left: 15px;
-}
+
 
 @keyframes heading {
   14.2857% {
@@ -155,7 +198,7 @@
   }
 }
 
-.main_page_h {
+.home-page-heading-base {
   font-family: var(--font-3);
   font-size: 150px;
   text-align: center;
@@ -171,7 +214,7 @@
   user-select: none;
 }
 
-.main_page_subh {
+.home-page-subheading-base {
   font-family: var(--font-1);
   font-size: 50px;
   text-align: center;
@@ -373,10 +416,7 @@
   justify-content: space-between;
 }
 
-.space_btw {
-  padding-top: 5vw;
-  padding-bottom: 2vw;
-}
+
 
 .logo_foot {
   width: 30vw;
@@ -397,9 +437,10 @@
   padding-top: 6vw;
 }
 
-.upper {
+.img-upper-base {
   position: relative;
   z-index: 1;
+  height: 400px;
 }
 
 .fixed-top {
@@ -410,9 +451,6 @@
   z-index: 1030;
 }
 
-.burger {
-  display: none;
-}
 
 .line {
   width: 33px;
@@ -421,7 +459,7 @@
   background-color: rgb(0, 0, 0);
 }
 
-.upper .bgimg {
+.img-upper-base .bgimg-base {
   position: absolute;
   z-index: -1;
   top: 0;
@@ -431,7 +469,7 @@
   background: var(--bg_img) center center;
   opacity: 0.6;
   background-size: cover;
-  height: 40vw;
+  height: 400px;
 }
 
 .reset_pass_input {
@@ -469,5 +507,7 @@
 .pass-reset-form{
   text-align: center;
 }
-@media only screen and (max-width: 880px) {
+
+.space-login{
+  padding: 30px;
 }

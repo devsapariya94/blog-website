@@ -18,14 +18,3 @@
           --font-8: 'Open Sans', sans-serif;
 }
 
-.width_1 {
-          max-width: 1200px;
-}
-
-.width_2 {          
-          max-width: 900px;
-}
-
-.m_auto {
-          margin: auto;
-}
