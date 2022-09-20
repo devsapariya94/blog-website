@@ -5,7 +5,7 @@ from flask_login import LoginManager
 import json
 from flask_mail import Mail, Message
 
-with open('website\config.json', 'r') as c:
+with open('website/config.json', 'r') as c:
                     params = json.load(c)["params"]
 
 
@@ -22,6 +22,7 @@ def create_app():
           app.config['MAIL_PASSWORD'] = params["pass"]
           app.config['MAIL_USE_TLS'] = False
           app.config['MAIL_USE_SSL'] = True
+          app.config[]
           mail.init_app(app)
 
           app.config["SECRET_KEY"]="helloworld"
