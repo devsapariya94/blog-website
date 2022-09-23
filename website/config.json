@@ -5,8 +5,8 @@
                     "home_background_img": "index_bg.jpg",
                     "main_color": "red",
                     "login_background_img": "test.jpg",
-                    "email":"devsmail94@gmail.com",
-                    "pass":"nemvgzbiucefaueb"
+                    "email":"email",
+                    "pass":"app_specific password"
 
           }
 }
