@@ -212,3 +212,12 @@ content2.style.display = "block";
   params = { "pass": password};
   xhr.send(JSON.stringify(params));
 }
+
+
+
+function login_email(){
+  const element=document.getElementById("login-option-visibility");
+  element.style.display="none";
+  var content = document.getElementById("login-option-email")
+  content.style.display = "block";
+}

@@ -1,17 +1,32 @@
 {% extends "base-2.html" %}
 {% block body %}
 
+<style>
+  #login-option-email{
+    display: none;
+  }
+</style>
+
+<div id="login-option-visibility">
+<div class="login-option">
+  
+  <button class="login-option-btn-google" onclick="location.href='/google_login'" >Login With Google</button>
+  <button class="login-option-btn-email" onclick="login_email()">Login With Email</button>
+</div>
+</div>
+
+<div id="login-option-email">
 <div class="content width_1 m_auto">
    <div class="space-login"></div>
 
   <div class="login-greet">Login</div>
   <div class="login-form">
     <div class="login-email">
-      <input type="text" name="logemail" id="logemail" placeholder="E-Mail" class="login-input-email" required
+      <input type="text" name="logemail" id="logemail" tabindex="1" placeholder="E-Mail" class="login-input-email" required
         onchange="check_email_for_login()">
       <div style="padding-top: 2vw;"></div>
 
-      <input type="password" name="logpass" id="logpass" placeholder="Password" class="login-input-pass" required>
+      <input type="password" name="logpass" id="logpass" tabindex="2" placeholder="Password" class="login-input-pass" required>
 
       <div>
         <span id="login_warning" style="color: red; font-weight: bold; opacity: 0;">*</span>
@@ -21,7 +36,7 @@
 
 
 
-    <button onclick="check_password_for_login()" class="login-btn" id="login-btn">Login</button>
+    <button onclick="check_password_for_login()" class="login-btn" tabindex="3" id="login-btn">Login</button>
   </div>
 </div>
 <div style="text-align: center; padding-top: 10px;">
@@ -31,5 +46,5 @@
   New author? <a href="/signup"> register</a> yourselef
 </div>
 
-
+</div>
 {% endblock %}

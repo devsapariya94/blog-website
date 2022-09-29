@@ -5,8 +5,9 @@
                     "home_background_img": "index_bg.jpg",
                     "main_color": "red",
                     "login_background_img": "test.jpg",
-                    "email":"email",
-                    "pass":"app_specific password"
-
+                    "email":"email@gmail.com",
+                    "pass":"app-specific-password",
+                    "client_ID_gmail": "client id google",
+                    "client_secret_gmail": "client secret google"
           }
 }

@@ -9,7 +9,7 @@
   /* background-color: lawngreen; */
   align-items: center;
   position: relative;
-  height: 60px;
+  height: 5vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -510,4 +510,53 @@
 
 .space-login{
   padding: 30px;
+}
+
+
+.login-option{
+  display: flex;
+padding-top: 10vw;
+flex-direction: column;
+padding: 5vw;
+
+}
+
+
+
+.login-option-btn-google{
+  margin-top: 3vw;
+  margin-bottom: 2vw;
+  font-family: var(--font-2);
+  font-size: 2vw;
+  border-radius: 2vw;
+  width: 20vw;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.login-option-btn-email{
+  font-family: var(--font-2);
+  font-size: 2vw;
+  border-radius: 2vw;
+  width: 20vw;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.login-option-btn-email:hover{
+  background-color: var(--main-bg-color);
+  cursor: pointer;
+
+}
+.login-option-btn-google:hover{
+  background-color: var(--main-bg-color);
+  cursor: pointer;
 }
