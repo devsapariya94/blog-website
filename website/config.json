@@ -1,13 +1,12 @@
 {
           "params": {
+                    "DB_NAME":"database",
                     "blog_name": "Learner",
                     "blog_subheading":"Ready to learn new...",
                     "home_background_img": "index_bg.jpg",
                     "main_color": "red",
                     "login_background_img": "test.jpg",
-                    "email":"email@gmail.com",
-                    "pass":"app-specific-password",
-                    "client_ID_gmail": "client id google",
-                    "client_secret_gmail": "client secret google"
+                    "email":"google email",
+                    "pass":"app specific password"
           }
 }

@@ -1,24 +1,39 @@
 function check_pass() {
   const element = document.getElementById("signup_warning");
-  if (document.getElementById('password').value == document.getElementById('cpassword').value) {
-    if (document.getElementById('password').value.length < 8) {
-      element.style.opacity = "1";
-      element.innerHTML = "The password should be in atleast 8 charcter long";
-      document.getElementById('signup-btn').disabled = true;
-    }
-    else {
-      element.style.opacity = "0";
-      element.innerHTML = "*";
-      document.getElementById('signup-btn').disabled = false;
-    }
+  if (document.getElementById('password').value.length >= 8) {
+    // if (document.getElementById('password').value != document.getElementById('cpassword').value) {
+    //   element.style.opacity = "1";
+    //   element.innerHTML = "Password and Confirm Password should be same";
+    //   document.getElementById('signup-btn').disabled = true;
+    // }
+    // else {
+    element.style.opacity = "0";
+    element.innerHTML = "*";
+    document.getElementById('signup-btn').disabled = false;
+    // }
   }
 
   else {
     element.style.opacity = "1";
-    element.innerHTML = "Passwords are not same";
+    element.innerHTML = "The password should be in atleast 8 charcter long";
     document.getElementById('signup-btn').disabled = true;
   }
 
+}
+
+function check_pass_c() {
+  const element = document.getElementById("signup_warning");
+  if (document.getElementById('password').value != document.getElementById('cpassword').value) {
+    element.style.opacity = "1";
+    element.innerHTML = "Password and Confirm Password should be same";
+    document.getElementById('signup-btn').disabled = true;
+  }
+
+  else {
+    element.style.opacity = "0";
+    element.innerHTML = "*";
+    document.getElementById('signup-btn').disabled = false;
+  }
 }
 
 
@@ -117,7 +132,7 @@ function check_password_for_login() {
   element = document.getElementById('login_warning');
   xhr.onload = function () {
     if (this.responseText == "yes") {
-      window.location = "/sucsses";
+      window.location = "/success";
     }
     if (this.responseText == "no") {
       element.style.opacity = "1";
@@ -138,7 +153,7 @@ function ValidateEmail() {
   var emailAdress = document.getElementById("logemail").value
   let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if (emailAdress.match(regexEmail)) {
-    
+
     document.getElementById('forgetpass-btn').disabled = false;
   }
   else {
@@ -168,56 +183,61 @@ function after_forgetpass() {
 
 function reset_check_pass() {
   const element = document.getElementById("reset_warning");
-  if (document.getElementById('new_pass').value == document.getElementById('new_pass_c').value) {
-    if (document.getElementById('new_pass').value.length < 8) {
-      element.style.opacity = "1";
-      element.innerHTML = "The password should be in atleast 8 charcter long";
-      document.getElementById('reset-pass-btn').disabled = true;
-    }
-    else {
-      element.style.opacity = "0";
-      element.innerHTML = "*";
-      document.getElementById('reset-pass-btn').disabled = false;
-    }
+  if (document.getElementById('new_pass').value.length >= 8) {
+    element.style.opacity = "0";
+    element.innerHTML = "*";
+    document.getElementById('reset-pass-btn').disabled = false;
   }
 
   else {
     element.style.opacity = "1";
-    element.innerHTML = "Passwords are not same";
+    element.innerHTML = "password must be at least 8 characters";
     document.getElementById('reset-pass-btn').disabled = true;
   }
 
 }
 
+function reset_check_pass_c() {
+  const element = document.getElementById("reset_warning");
+  if (document.getElementById('new_pass').value != document.getElementById('new_pass_c').value) {
+    element.style.opacity = "1";
+    element.innerHTML = "password and confirm password must be same";
+    document.getElementById('reset-pass-btn').disabled = true;
+  }
+  else {
+    element.style.opacity = "0";
+    element.innerHTML = "*";
+    document.getElementById('reset-pass-btn').disabled = false;
+  }
+}
 
 
 function reset_pass() {
   document.getElementById('reset-pass-btn').disabled = true;
-  path=window.location.pathname
+  path = window.location.pathname
   const xhr = new XMLHttpRequest();
   var content = document.getElementById("pass_reset_content")
   var content2 = document.getElementById("pass_reset")
   xhr.open('POST', path, true);
   xhr.onload = function () {
     if (this.responseText == "yes") {
-console.info("yes")
-content.style.display = "none";
-content2.style.display = "block";
+      content.style.display = "none";
+      content2.style.display = "block";
     }
     if (this.responseText == "no") {
 
     }
   }
   var password = document.getElementById('new_pass').value
-  params = { "pass": password};
+  params = { "pass": password };
   xhr.send(JSON.stringify(params));
 }
 
 
 
-function login_email(){
-  const element=document.getElementById("login-option-visibility");
-  element.style.display="none";
+function login_email() {
+  const element = document.getElementById("login-option-visibility");
+  element.style.display = "none";
   var content = document.getElementById("login-option-email")
   content.style.display = "block";
 }

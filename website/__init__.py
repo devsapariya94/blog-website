@@ -12,9 +12,9 @@ with open('website/config.json', 'r') as c:
 db=SQLAlchemy()
 mail=Mail()
 DB_NAME="database.db"
-
+app=Flask(__name__)
 def create_app():
-          app=Flask(__name__)
+        
 
           app.config['MAIL_SERVER']='smtp.gmail.com'
           app.config['MAIL_PORT'] = 465
@@ -36,13 +36,14 @@ def create_app():
 
           from .views import views
           from .auth import auth
-
+          from .posts import posts
           app.register_blueprint(views, url_prefix="/")
           app.register_blueprint(auth, url_prefix="/")
-
+          app.register_blueprint(posts, url_prefix="/")
           from .models import Users
 
           create_database(app)
+            
           
           login_manager= LoginManager()
           login_manager.login_view="auth.login"
@@ -56,5 +57,6 @@ def create_app():
 
 def create_database(app):
           if not path.exists("website/"+ DB_NAME):
-                    db.create_all(app=app)
+            with app.app_context():
+                  db.create_all()
                      

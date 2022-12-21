@@ -1,5 +1,5 @@
 import re
-from flask import Blueprint, render_template,redirect, url_for, request, flash
+from flask import Blueprint, render_template,redirect, url_for, request, flash,session
 import json
 from . import db
 from .models import Users
@@ -7,16 +7,16 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required, current_user
 import time
 from flask_mail import Mail, Message
-from . import mail, params
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-auth=Blueprint("auth", __name__)
+from . import mail, params, app
+from itsdangerous.url_safe import URLSafeTimedSerializer as Serializer
 import requests
 import os
 from oauthlib.oauth2 import WebApplicationClient
-
-
+import jwt
+from time import time
 fortoken=Serializer("super-super-secret",1800)
 
+auth=Blueprint("auth", __name__)
 
 GOOGLE_CLIENT_ID = os.environ.get(params["client_ID_gmail"], None)
 GOOGLE_CLIENT_SECRET = os.environ.get(params["client_secret_gmail"], None)
@@ -98,8 +98,9 @@ def forgetpass():
         email_exist=Users.query.filter_by(email=email).first()
         if email_exist:
             user=Users.query.filter_by(email=email).first()
-            token=fortoken.dumps({"user_id":user.id}).decode('utf-8')
+            token = jwt.encode({'user-id': user.id, 'exp': time() + 1200},app.config['SECRET_KEY'], algorithm='HS256')
             link="http://localhost:5000/reset_request/"+token
+            print(token)
             sub="Forget Password? No worries."
             msg = Message(sub ,recipients=[email], sender=params["email"])
             msg.html = '<html><body>    <a href="http://localhost:5000" style="text-decoration: none; font-size: 45px; font-weight: bold; font-family: cursive;">'+params["blog_name"]+'</a><h1 style="text-align: center;">Don&rsquo;t Worry if u Forget Password</h1>   <p>Hii, </p><div>    &nbsp; &nbsp; I am a computer from <a href="localhost:5000">'+params["blog_name"]+'</a>. I send this massage because u have requested for reset password.    <br>    &nbsp; &nbsp; Click below for further steps.</div>    <br>    <br>    <br>    <div style="text-align: center;">   <a href="'+link+'" style="align-items: center;background-color: chartreuse;font-weight: bold;color: black;border: 2px solid rgb(216, 2, 134);border-radius: 0px;padding: 18px 36px;display: inline-block;font-size: 14px;letter-spacing: 1px;cursor: pointer; ">Click here!</a></div><br><div style="text-align: center;">past the following link in the browser<br>'+link+'</div><br><div style:"text-align:center">If You do not request than ignore this mail</div></body></html>'
@@ -116,11 +117,26 @@ def forgetpass():
 
 @auth.route("/reset_request/<token>",methods=["GET","POST"])
 def request_reset(token):
-    # try:
-        userid=fortoken.loads(token)
-        user_id=userid['user_id']
+    try:
+        user=jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])
+        user_id=user['user-id']
         user=Users.query.filter_by(id=user_id).first()
-    
+        if user:
+                return render_template("reset_request.html",
+                                        main_color=params["main_color"],
+                                        page_heading="Reset Password",
+                                        blog_name=params["blog_name"])
+        else:    
+                return render_template("404.html",
+                                        main_color=params["main_color"],
+                                        page_heading="Page not Found",
+                                        blog_name=params["blog_name"])
+    except:
+        return render_template("404.html", 
+                                main_color=params["main_color"],    
+                                page_heading="Page not Found",
+                                blog_name=params["blog_name"])
+    finally:
         if request.method=="POST":
             get_json=request.get_json("params")
             password=get_json['pass']
@@ -130,17 +146,7 @@ def request_reset(token):
             print("done")
             return "yes"
 
-        else:
-            if user:
-                return render_template("reset_request.html",
-                                        main_color=params["main_color"],
-                                        page_heading="Reset Password",
-                                        blog_name=params["blog_name"])
-            else:    
-                return render_template("404.html",
-                                        main_color=params["main_color"],
-                                        page_heading="Page not Found",
-                                        blog_name=params["blog_name"])
+       
     
 
 @auth.route("/check_email", methods=["GET","POST"])
@@ -159,62 +165,6 @@ def check_email():
                     return redirect("/")
 
 
-def get_google_provider_cfg():
-    return requests.get(GOOGLE_DISCOVERY_URL).json()
-
-@auth.route("/google_login")
-def google_login():
-    google = get_google_provider_cfg()
-    authorization_endpoint = google["authorization_endpoint"]
-
-    request_uri = client.prepare_request_uri(
-        authorization_endpoint,
-        redirect_uri=request.base_url + "/callback",
-        scope=["openid", "email", "profile"],
-    )
-    return redirect(request_uri)
-
-@auth.route("/google_login/callback")
-def callback():
-    # Get authorization code Google sent back to you
-    code = request.args.get("code")
-    google_provider_cfg = get_google_provider_cfg()
-    token_endpoint = google_provider_cfg["token_endpoint"]
-    token_url, headers, body = client.prepare_token_request(
-    token_endpoint,
-    authorization_response=request.url,
-    redirect_url=request.base_url,
-    code=code
-    )
-    token_response = requests.post(
-        token_url,
-        headers=headers,
-        data=body,
-        auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
-    )
-
-    # Parse the tokens!
-    client.parse_request_body_response(json.dumps(token_response.json()))
-    userinfo_endpoint = google_provider_cfg["userinfo_endpoint"]
-    uri, headers, body = client.add_token(userinfo_endpoint)
-    userinfo_response = requests.get(uri, headers=headers, data=body)
-    if userinfo_response.json().get("email_verified"):
-        unique_id = userinfo_response.json()["sub"]
-        users_email = userinfo_response.json()["email"]
-        picture = userinfo_response.json()["picture"]
-        users_name = userinfo_response.json()["given_name"]
-    else:
-        return "User email not available or not verified by Google.", 400
-    login_user = User(
-        id_=unique_id, name=users_name, email=users_email, profile_pic=picture
-    )
-
-    # Doesn't exist? Add it to the database.
-    if not User.get(unique_id):
-        User.create(unique_id, users_name, users_email, picture)
-
-    # Begin user session by logging the user in
-    login_user(user)
-
-    # Send user back to homepage
-    return redirect("/")
+@auth.route("/success")
+def login_done():
+    return redirect(session['url'])
