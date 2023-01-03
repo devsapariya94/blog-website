@@ -18,11 +18,6 @@ fortoken=Serializer("super-super-secret",1800)
 
 auth=Blueprint("auth", __name__)
 
-GOOGLE_CLIENT_ID = os.environ.get(params["client_ID_gmail"], None)
-GOOGLE_CLIENT_SECRET = os.environ.get(params["client_secret_gmail"], None)
-GOOGLE_DISCOVERY_URL = ("https://accounts.google.com/.well-known/openid-configuration")
-client = WebApplicationClient(params["client_ID_gmail"])
-
 
 
 @auth.route("/login", methods=["GET","POST"])
@@ -32,7 +27,7 @@ def login():
                     email=get_json['email'].lower()
                     password_get=get_json['password']
                     user=Users.query.filter_by(email=email).first()
-
+                    session['url'] = url_for('views.home')
                     if check_password_hash(user.password, password_get):
                               login_user(user, remember=True)
                               return "yes"

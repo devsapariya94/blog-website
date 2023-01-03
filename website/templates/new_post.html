@@ -3,7 +3,29 @@
 {% block body %}
 
 <div class="new-post-main">
-    <input type="text">
+    <form>
+        <label for="new-post-title-input">Title</label>
+        <input id="new-post-title-input" type="text" class="new-post-title-input">
+        <br>
+        <label for="new-post-subtitle-input">Sub Title</label>
+        <input id="new-post-subtitle-input" type="text" class="new-post-subtitle-input">
+        <br>
+        <label for="new-post-content-textarea">Content</label>
+        <textarea id="new-post-content-textarea" class="new-post-content-textarea"></textarea>
+        <br>
+        <label for="new-post-poster-image-input">Poster Image</label>
+        <input id="new-post-poster-image-input" type="file" class="new-post-poster-image-input">
+        <br>
+        <label for="new-post-tags-input">Tags</label>
+        <input id="new-post-tags-input" type="text" class="new-post-tags-input">
+        <br>
+        <label for="new-post-category-input">Category</label>
+        <input id="new-post-category-input" type="text" class="new-post-category-input">
+        <br>
+        <button class="new-post-submit-button">Submit</button>
+      </form>
+      
+
 </div>
 
 {% endblock %}
