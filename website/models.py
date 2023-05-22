@@ -7,6 +7,8 @@ class Users(db.Model, UserMixin):
         username=db.Column(db.String(150), unique=True)
         email=db.Column(db.String(150), unique=True)
         password=db.Column(db.String(150))
+        auth_type=db.Column(db.String(150))
+        profile_pic=db.Column(db.String(150), default="default.png")
         date_created=db.Column(db.DateTime(timezone=True), default=func.now())
 
 class Post(db.Model):
@@ -17,3 +19,6 @@ class Post(db.Model):
         body=db.Column(db.Text)
         author=db.Column(db.String(20))
         date_created=db.Column(db.DateTime(timezone=True), default=func.now())
+
+
+

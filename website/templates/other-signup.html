@@ -1,0 +1,38 @@
+{% extends "base-2.html" %}
+{% block body %}
+
+
+<div class="content width_1 m_auto">
+
+
+  <div class="signup-greet">Sign Up</div>
+
+  <form action="/signup-other" class="signup-form" method="POST">
+
+    <div class="signup-email">
+    
+      <input type="text" name="username" id="username" placeholder="Choose Username" onchange="check_user()" class="signup-input-email" required>
+      <div style="padding-top: 2vw;"></div>
+
+      <br>
+      <span id="signup_warning" style="color: red; font-weight: bold
+            ; padding-top: 3px; opacity: 0;">*</span>
+      <div style="padding-top: 2vw;"></div>
+
+      <input type="hidden" name="email" value={{email}}>
+        <input type="hidden" name="picture" value={{picture}}>
+        <input type="hidden" name="password" value={{password}}>
+        <input type="hidden" name="auth_type" value={{auth_type}}>
+    </div>
+
+
+
+    <button type="submit" id="signup-btn" class="signup-btn">submit</button>
+</div>
+</form>
+
+
+
+
+
+{% endblock %}
